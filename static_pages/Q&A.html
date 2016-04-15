@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>畢聯會有獎徵答</title>
+  
+  <link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-deep_purple.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="css/qa.css" />
+  <!--[if IE]>
+    <script type="text/javascript">
+       var console = { log: function() {} };
+    </script>
+  <![endif]-->
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+  <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+  <script type="text/javascript" src="js/jquery.fullPage.min.js"></script>
+  <script type="text/javascript" src="js/qgame.js"></script>
+  <script type="text/javascript" src="js/jquery.cookie.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</head>
+
+<body id="main_body">
+
+<ul id="menu">
+  <li ><a href="/projectQA" class="back-icon"> <div class="back-wrap">
+  <i class="fa fa-arrow-left"></i>&nbsp;&nbsp;回到活動頁面
+  </div></a></li>
+  <li data-menuanchor="firstPage"><a href="#firstPage">填寫基本資料</a></li>
+  <li data-menuanchor="secondPage"><a href="#secondPage">回答問題</a></li>
+  <li data-menuanchor="3rdPage"><a href="#3rdPage">確認送出</a></li>
+</ul>
+
+
+<!-- start of scroll_page -->
+<div id="fullpage">
+
+  <!-- Section 0 : Basic Status -->
+  <div class="section " id="section0">
+    <h1>請填寫基本資料</h1>
+	<span style="font-size:20pt">為了日後中獎聯繫方便，請確實填寫!</span>
+    <form action="#">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="box-name">
+          <input class="mdl-textfield__input" type="text" id="student_name">
+          <label class="mdl-textfield__label" for="student_name">姓名...</label>
+        </div><br>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="box-id">
+          <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="student_id">
+          <label class="mdl-textfield__label" for="student_id">學號...</label>
+          <span class="mdl-textfield__error">請輸入正確的學號格式!</span>
+        </div><br>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="box-ph">
+          <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="student_ph">
+          <label class="mdl-textfield__label" for="student_ph">電話...</label>
+          <span class="mdl-textfield__error">請輸入正確的電話格式!</span>
+        </div><br>
+    </form>
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onClick="$.fn.fullpage.moveSectionDown();">
+        填寫完畢! 開始答題!
+    </button>
+  </div>
+
+  <!-- Section 1 : Answering the questions -->
+  <div class="section" id="section1">
+    <!-- slides will be added here dynamically -->
+  </div>
+
+  <!-- Section 3 : Confirm the answer & submit results -->
+  <div class="section" id="section2">
+    <div class="intro">
+		<span style="font-size:20pt">答案即將送出......</span>
+        <h1>請確認以下資料</h1>
+        <div class="panel panel-primary info-table">
+            <!-- Default panel contents -->
+            <div class="panel-heading">基本資料</div>
+            <!-- Table -->
+            <table class="table table-hover table-bordered">
+              <tr>
+              <td>姓名</td>
+              <td id="info-name"></td>
+            </tr>
+            <tr>
+              <td>學號</td>
+              <td id="info-id"></td>
+            </tr>
+            <tr>
+              <td>連絡電話</td>
+              <td id="info-ph"></td>
+            </tr>
+            </table>
+        </div>    
+
+        <div class="panel panel-success info-table">
+            <!-- Default panel contents -->
+            <div class="panel-heading">你的答案</div>
+            <!-- Table -->
+            <table class="table table-hover table-bordered">
+              <tr id="info-qnum">
+              
+              </tr>
+              <tr id="info-qans">
+              
+              </tr>
+            </table>
+        </div>
+        <button class="btn btn-primary btn-lg option" onclick="submit_answer();">
+              確認送出
+        </button>
+    </div>
+  </div>
+
+</div><!-- end of scroll_page -->
+
+
+</body>
+</html>

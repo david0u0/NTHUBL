@@ -1,0 +1,76 @@
+.clear {
+	clear: both;
+}
+
+#container {
+	margin-left: 40%;
+}
+
+#timeline {
+	float: left;
+	height: 500px;
+	width: 20px;
+	margin-right: 10px;
+	background-color: rgb(60, 60, 60);
+}
+
+#ball-container {
+	float: left;
+	position: relative;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.ball {
+	position: absolute;
+	height: 15px;
+	width: 15px;
+	border-radius: 7px;
+	transition: opacity 0.2s ease-in-out;
+	opacity: 0.6;
+	cursor: pointer;
+}
+
+.ball:hover {
+	opacity: 1;
+}
+
+.open {
+	opacity: 1;
+	z-index: 99;
+}
+
+.inactive {
+	opacity: 0;
+	cursor: auto;
+	z-index: 0;
+}
+
+.inactive:hover {
+	opacity: 0;
+}
+
+.title {
+	position: absolute;
+	left: 20px;
+	top: -5px;
+	display: inline-block;
+	width: 500px;
+	color: rgb(40, 40, 40);
+	-webkit-user-select: none;
+}
+
+.detail {
+	opacity: 0;
+	transition: opacity 0.2s ease-in-out;
+	position: absolute;
+	left: 30px;
+	color: rgb(50, 50, 50);
+	font-size: 20px;
+	width: 500px;
+}
+
+a {
+	cursor: pointer;
+	color: rgb(255, 30, 120);
+}

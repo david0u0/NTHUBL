@@ -1,0 +1,48 @@
+.main-block{
+	background: url('/img/transparent.jpg') no-repeat center center fixed; 
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+	margin: 0;
+	padding-top: 50px;
+	height: 100%;
+	width:100%;
+}
+.footer-marker{
+	margin: 0;
+	bottom: 0;
+	padding: 20px;
+}
+.query-wrapper{
+	position: relative;
+	padding: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+	background-color: rgba(255,255,255,0.2);
+	border-radius: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 400px;
+}
+.title{
+	font-size: 20pt;
+	color:white;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 10px;
+}
+.btn-wrapper{
+	margin-top: 25px;
+	text-align: center;
+}
+.result-box{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 30pt;
+	font-weight: bold;
+	line-height: 120%;
+	text-align: center;
+	color: white;
+}

@@ -1,0 +1,69 @@
+body{
+  font-family: 'Source Sans Pro', '微軟正黑體', sans-serif;
+}
+.webinfo {
+  margin-top: 50px;
+}
+
+.nextbox {
+  margin-top: 75px;
+}
+
+.big-icon {
+  font-size: 32px;
+}
+
+.infobox {
+  border-style:solid;
+  border-radius:25px;
+}
+.huamei{
+	position:relative;
+	height:100%;
+	right:-100px;
+	bottom:0;
+	z-index:999;
+	animation:huameislide;
+	animation-duration:5s;
+	animation-fill-mode: forwards;
+}
+.huamei-wrapper
+{
+	position:absolute;
+	width:500;
+	height:200px;
+	right:0;
+	bottom:0;
+	z-index:-1;
+	overflow:hidden;
+	animation:huameislide-box;
+	animation-duration:5s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes huameislide{
+	0%{
+		right:-500px;
+	}
+	20%{
+		right:-150px;
+	}
+	40%{
+		right:-200px;
+	}
+	100%{
+		right:-500px;
+	}
+}
+
+@keyframes huameislide-box{
+	0%{
+		z-index:-1;
+	}
+	50%{
+		z-index:999;
+	}
+	100%{
+		z-index:-1;
+	}
+}

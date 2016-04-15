@@ -1,0 +1,180 @@
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="./css/normalize.css">
+    <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="/js/admin_query.js"></script>
+    <style type="text/css">
+      body {
+        padding-top: 50px;
+      }
+      table {
+        table-layout: fixed;
+        word-wrap: break-word;
+      }
+      .starter-template {
+        padding: 40px 15px;
+        text-align: center;
+      }
+      .qtable {
+        margin-left: auto;
+        margin-right: auto;
+        width: 1200px;
+      }
+    </style>
+	<script type="text/javascript">
+		function doAdd(){
+			document.getElementById("addform").submit();
+		}
+	</script>
+  </head>
+  
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">管理員介面 (題庫管理)</a>
+        </div>
+	<div align="right">
+          <a class="btn btn-primary" href="/adminLogout" role="button">Logout</a>
+        </div>
+      </div>
+    </nav>
+	
+    <div class="container">
+      <div class="starter-template">
+        <h1>伺服器題庫管理介面</h1>
+        <p class="lead" id="showbox">
+        有任何問題請洽作者 : </br>
+        陳柏翰 : hank101060019@gmail.com  或  </br>
+        廖仲文 : ljw830517@gmail.com</p>
+      </div>
+        <!--a class="btn btn-primary" role="button" onclick="add()">新增</a> -->
+    </div><!-- /.container -->
+
+    <!-------------------------------------- MODIFIED ------------------------------>
+    <div class="container">
+      <ul id="myTabs" class="nav nav-tabs" role="tablist"> 
+        <li role="presentation" class="active">
+          <a href="#questions" role="tab" data-toggle="tab" aria-controls="question" aria-expanded="true">題庫</a></li> 
+        <li role="presentation" class="">
+          <a href="#contestants" role="tab" data-toggle="tab" aria-controls="contestant" aria-expanded="false">待抽者資料</a></li> 
+      </ul>
+    </div>
+
+    <div class="tab-content">
+      <!-- Questions tab  -->
+      <div role="tabpanel" class="tab-pane active" id="questions">
+	<!-- Button trigger modal -->
+	<div align="center">
+		<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  		新增
+		</button>
+	</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">新增題目</h4>
+	      </div>
+	      <div class="modal-body">
+          		<form id="addform" action="addQuestion" method="POST">
+            		<div class="form-group">
+              			<label for="Q">題目：</label>
+              			<textarea class="form-control" rows="5" id="Q" name="question"></textarea>
+            		</div></br>
+            		<div class="form-group">
+              			<label for="A">選項A：</label>
+              			<textarea class="form-control" rows="2" id="A" name="optionA"></textarea>
+            		</div></br>
+            		<div class="form-group">
+              			<label for="B">選項B：</label>
+              			<textarea class="form-control" rows="2" id="B" name="optionB"></textarea>
+            		</div></br>
+            		<div class="form-group">
+              			<label for="C">選項C：</label>
+              			<textarea class="form-control" rows="2" id="C" name="optionC"></textarea>
+            		</div></br>
+            		<div class="form-group">
+              			<label for="D">選項D：</label>
+              			<textarea class="form-control" rows="2" id="D" name="optionD"></textarea>
+            		</div></br>
+                答案：
+                <label class="radio-inline">
+                  <input type="radio" name="answer" id="A" value="A"> A
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="answer" id="B" value="B"> B
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="answer" id="C" value="C"> C
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="answer" id="D" value="D"> D
+                </label>
+          		</form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary" onclick="doAdd()">Save changes</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+    <!-- TODO : Add question / Modify question / Delete question -->
+    <table id="demo_table" class="qtable table table-bordered table-hover">
+        <thead>
+          <tr class="info">
+            <th class="col-md-1">#</th>
+            <th class="col-md-5">題目</th>
+            <th class="col-md-1.5">選項A</th>
+            <th class="col-md-1.5">選項B</th>
+            <th class="col-md-1.5">選項C</th>
+            <th class="col-md-1.5">選項D</th>
+            <th class="col-md-1.5">答案</th>
+            <th class="col-md-1.5">刪除</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Contents goes here... (filled by javascript) -->
+        </tbody>
+    </table>
+    
+      </div>
+      
+      <!-- Students tab -->
+      <div role="tabpanel" class="tab-pane" id="contestants">
+        <table id="contestant_table" class="qtable table table-bordered table-hover">
+          <thead>
+            <tr class="info">
+              <th class="col-md-1">#</th>
+              <th class="col-md-3">學號</th>
+              <th class="col-md-2">姓名</th>
+              <th class="col-md-3">電話</th>
+              <th class="col-md-3">時間</th>
+              <th class="col-md-3">IP</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Contents goes here... (filled by javascript) -->
+          </tbody>
+      </table>  
+      </div>
+    </div>
+    <!--------------------------------------  ------------------------------>
+    
+  </body>
+
+</html>

@@ -1,0 +1,77 @@
+<html>
+<head>
+    <link rel="stylesheet" href="./css/pass.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <script src="/js/pass.js"></script>
+    <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    
+  <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color:#660066">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/projectQA" style="color:#ffffff"><i class="fa fa-graduation-cap"></i> 畢聯會有獎徵答</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+          <a class="navbar-brand navbar-right" href="#" data-toggle="modal" data-target="#myModal">
+            <i class="fa fa-phone-square"></i>
+            聯絡我們&nbsp;&nbsp;&nbsp;
+          </a>
+          <a class="navbar-brand navbar-right" href="https://www.facebook.com/nthugrad/?fref=ts">
+            <i class="fa fa-facebook-square"></i>
+            Facebook粉絲專頁&nbsp;&nbsp;&nbsp;
+          </a>
+      </div><!--/.navbar-collapse -->
+    </div>
+  </nav>
+
+  <div class="main-block">
+    <div class="query-wrapper">
+      <div class="title">
+        查詢已登錄之學號
+      </div>
+      <input class="form-control input-lg" type="text" placeholder="Student ID here..." id="query_id">
+      <div class="btn-wrapper">
+        <button class="btn btn-primary btn-lg" onclick="ping_id()">Submit</button>
+      </div>
+    </div>
+    <div class="result-box" id="resultbox"></div>
+  </div>
+
+  <hr style="margin:0">
+  <footer class="footer-marker">
+    <p style="text-align:center">&copy; 國立清華大學 畢聯會 (NTHU Graduation Student Association)</p>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">關於我們</h4>
+        </div>
+        <div class="modal-body"> <h4>
+          作者1 : 陳柏翰(電資16) <i class="fa fa-envelope"></i> hank101060019@gmail.com</br>
+          作者2 : 廖仲文(電機16) <i class="fa fa-envelope"></i> ljw830517@gmail.com</br>
+          網資股長：許菀庭(電機16) <i class="fa fa-envelope"></i> cindyemail0720@yahoo.com.tw </h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+</body>
+</html>

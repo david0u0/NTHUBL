@@ -1,0 +1,26 @@
+#board {
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+	margin-top: 30px;
+}
+
+#board>a {
+	display: block;
+	border-bottom: #008080 1px dotted;
+	border-left: #008080 7px solid;
+	font-size: 20px;
+	text-decoration: none;
+	color: rgb(30, 30, 30);
+	padding: 8px;
+}
+
+#board>a:hover {
+	background-color: rgb(220, 220, 220);
+	border-left: gray 10px solid;
+}
+
+.date {
+	font-weight: bold;
+	color: #008080;
+}

@@ -1,0 +1,144 @@
+﻿body {
+    background-color: white !important;
+}
+
+.btn {
+	cursor: pointer;
+}
+
+
+#introduction {
+    font-family: 微軟正黑體;
+    text-align: center;
+    padding: 30px;
+    color: #746c6c;
+}
+
+#chinese-name {
+    font-size: 34px;
+    color: #6baab1;
+    font-weight:bold;
+}
+
+#english-name {
+    font-size: 17px;
+    font-weight:bold;
+    color: #6baab1;
+}
+
+#intro {
+    font-size: 16px;
+    color: #746c6c;
+}
+
+
+
+#sticker {
+    background-color:rgba(255,255,255,0.7);
+    box-shadow: rgba(255, 255, 255, 0.7) 1px 5px 10px;
+    color: white;
+    
+    font-size: 30px;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width:100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#sticker button {
+    font-size: 18px;
+    background-color:#7ac5cd;
+    font-family: 微軟正黑體;
+    color: white;
+    border: 0px;
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    text-shadow: rgba(116, 108, 108, 0.7) 2px 2px 3px;
+    outline: none;  /*取消選取時會出現的藍框*/
+}
+
+
+#sticker button:hover {
+    background-color:#6baab1;
+}
+
+
+
+/* ----------------group----------------------------- */
+
+.groups {
+    width: 950px;
+    height: 170px;
+
+    margin:0 auto;
+    border-radius: 0px;
+    margin-top: 30px;
+    margin-bottom:30px;
+
+    color: #4b4343;
+    font-size: 16px;
+    font-family:微軟正黑體;
+    /*background-color:#e9d6d6;*/
+    background-color:#eee4e4;
+
+    box-shadow:rgba(116, 108, 108, 0.6) 1px 3px 10px;
+}
+
+
+.groups:before {
+  content: "";
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.groups div {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.group-name {
+    /*color: #ada7a7;*/
+    /*color: #948a8a;*/
+    color: #8d6b68;
+    font-size: 65px;
+    width: 230px;
+    text-align:right;
+    margin-right: 40px;
+
+}
+
+
+.group-work {
+    color: #b43e3e;
+}
+
+
+/*------------------ footer ---------------------------*/
+
+#footer {
+    width: 100%;
+    height: 175px;
+    min-width:1150px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-top:120px;
+    background-color:#008080;
+
+    text-align:center;
+    font-family: 微軟正黑體;
+    font-size: 16px;
+    color: #fff;
+}
+
+#footer-content p { 
+    margin: 7px 0px 0px 0px;
+    font-size: 13px;
+    line-height: 16px;
+} 
+
+#footer-content i { color:rgba(209, 206, 206, 0.79);} 
+#footer-content i:hover { color:#fff;} 
