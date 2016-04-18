@@ -17,7 +17,7 @@ from datetime import datetime
 host = "localhost"
 port = 27017
 client = MongoClient(host,port)
-#client.test_database.authenticate('nthubl','nthubl2016', mechanism='SCRAM-SHA-1')
+client.test_database.authenticate('nthubl','nthubl2016', mechanism='SCRAM-SHA-1')
 # get the database
 db = client.test_database
 

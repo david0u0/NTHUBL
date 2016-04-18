@@ -8,7 +8,7 @@ from bson.objectid import ObjectId
 import projectQA_main
 
 client = MongoClient()
-#client.test_database.authenticate('nthubl', 'nthubl2016', mechanism='SCRAM-SHA-1')
+client.test_database.authenticate('nthubl', 'nthubl2016', mechanism='SCRAM-SHA-1')
 db = client.test_database
 activity_db = db.activity
 message_db = db.message
@@ -102,19 +102,22 @@ def post_activity(id):
 	detail = request.forms.get('detail')
 	img = request.files.get('img')
 	if(id == 'new'):
+		if not img:
+			return "IMAGE ERROR!!"
 		a = gen.Activity(title, href, detail, month, date)
 		id = activity_db.insert_one(a.toDict()).inserted_id
 		id = str(id)
 	else:
 		activity_db.update_one({'_id': ObjectId(id)}, {'$set':{
 			'title': title, 
-			'href': href
+			'href': href,
+			'detail': detail,
+			'month': month,
+			'date': date,
 		}})
 	if img:
-		img.save('static/img/activity/' + id)
-		redirect('/activity_back')
-	else:
-		return "FILE ERROR!"
+		img.save('static/img/activity/' + id, overwrite=True)
+	redirect('/activity_back')
 
 @post('/activity_back_delete/<id>') 
 def delete_activity(id):

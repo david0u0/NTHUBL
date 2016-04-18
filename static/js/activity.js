@@ -1,5 +1,5 @@
-var UNIT = 25;
-var START = new Date("2016/5/1");
+var UNIT = 50;
+var START = new Date("2016/5/7");
 
 function getPos(ev) {
 	var y = 0, obj = $('#timeline')[0];
