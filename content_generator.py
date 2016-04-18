@@ -61,30 +61,104 @@ def genDetailSlider(i):
 	return s
 
 class Msg:
-	def __init__(self, title, msg=None, href=None):
+	def __init__(self, title, msg="", href=""):
 		self.title = title
 		self.msg = msg
 		self.href = href
-		self.date = str(date.today())
+		self.month = date.today().month
+		self.date = date.today().day
+		self.id = None
+	@staticmethod
+	def initFromDict(d):
+		m = Msg(d['title'], msg=d['msg'], href=d['href'])
+		m.date = d['date']
+		m.id = d['_id']
+		return m
 	def toHTML(self):
+		date = '2016.%d.%d' % (self.month, self.date)
 		s = ''
-		if self.href:
+		if self.href != "":
 			s = '''
 			<a href="%s">
 			<span class="time">%s</span> 
 			%s
 			</a>
-			''' %(self.href, self.date, self.title)
+			''' %(self.href, date, self.title)
 		else:
 			s = '''
 			<a>
 			<span class="time">%s</span> 
 			%s
 			</a>
-			''' %(self.date, self.title)
-			#if self.msg:
+			''' %(date, self.title)
+			#if self.msg != "":
 			#	s += "<div class='msg'>%s</div>" % self.msg
 		return s
 
 	def toDict(self):
 		return self.__dict__
+
+	def toHTMLForm(self):
+		s = '''
+		<tr>
+		<form action='/index_back/%s' method='post'>
+			<td>%s</td>
+			<td>%s</td>
+			<td><input type='text' name='title' value='%s'/></td>
+			<td><input type='text' name='href' value='%s'/></td>
+			<td><button>EDIT</button></td>
+		</form>
+		<form action='/index_back_delete/%s' method='post'>
+			<td><button>DELETE</button></td>
+		</form>
+		</tr>
+		''' % (self.id, self.month, self.date, self.title, self.href, self.id)
+		return s
+
+class Activity:
+	def __init__(self, title, href, detail, month, date):
+		self.title = title
+		self.href = href
+		self.detail = detail
+		self.month = month
+		self.date = date
+		self.id = None
+	@staticmethod
+	def initFromDict(d):
+		a = Activity(d['title'], d['href'], d['detail'], d['month'], d['date'])
+		a.id = d['_id']
+		return a
+	def toHTML(self):
+		date = '2016-%d-%d' % (self.month, self.date)
+		s = '''
+		{
+			'date': '%s',
+			'title': '%s',
+			'detail': '%s',
+			'href': '%s',
+			'img': 'img/activity/%s'
+		}
+		''' %(date, self.title, self.detail, self.href, self.id)
+		return s
+
+	def toDict(self):
+		return self.__dict__
+
+	def toHTMLForm(self):
+		s = '''
+		<tr>
+		<form method='post' action='/activity_back/%s' enctype="multipart/form-data">
+			<td><input type='date' name='date' data-month='%s' data-day='%s'/></td>
+			<td><input type='text' name='title' value='%s'/></td>
+			<td><input type='text' name='href' value='%s'/></td>
+			<td><textarea name='detail'> %s </textarea> </td>
+			<td><img id='img-%s' src='img/activity/%s' onclick="upload('%s')"/></td>
+			<input id='upload-%s' type="file" name="img"/>
+			<td><button>EDIT</button></td>
+		</form>
+		<form action='/activity_back_delete/%s' method='post'>
+			<td><button>DELETE</button></td>
+		</form>
+		</tr>
+		''' % (self.id, self.month, self.date, self.title, self.href, self.detail, self.id, self.id, self.id, self.id, self.id)
+		return s

@@ -17,7 +17,7 @@ from datetime import datetime
 host = "localhost"
 port = 27017
 client = MongoClient(host,port)
-client.test_database.authenticate('nthubl','nthubl2016', mechanism='SCRAM-SHA-1')
+#client.test_database.authenticate('nthubl','nthubl2016', mechanism='SCRAM-SHA-1')
 # get the database
 db = client.test_database
 
@@ -55,7 +55,7 @@ def setup_request():
 # Static Page Handling
 ##########################################################################
 # Request for HomePage
-@route('/projectQA')
+@route('/projectQAwelnfwejfowej')
 def index_page():
 	return static_file('projectQA.html',root='./static_pages/')
 

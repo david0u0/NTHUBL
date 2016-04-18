@@ -1,9 +1,17 @@
 # coding=UTF-8
-from bottle import static_file, run, route, template, default_app
+from bottle import static_file, run, route, template, default_app, post, request, redirect
 from paste import httpserver
 from beaker.middleware import SessionMiddleware
 import content_generator as gen
-#import projectQA_main
+from pymongo import MongoClient
+from bson.objectid import ObjectId
+import projectQA_main
+
+client = MongoClient()
+#client.test_database.authenticate('nthubl', 'nthubl2016', mechanism='SCRAM-SHA-1')
+db = client.test_database
+activity_db = db.activity
+message_db = db.message
 
 @route('/prod/<i>')  #acess through ajax
 def product_detail(i):
@@ -18,7 +26,9 @@ def static(path):
 @route('/')
 @route('/home')
 def index():
-	msgs = [gen.Msg("test", msg="123"), gen.Msg("haha")]
+	global message_db
+	a = message_db.find()
+	msgs = [gen.Msg.initFromDict(m) for m in a]
 	return template('index', gen=gen, msgs=msgs)
 
 @route('/product')
@@ -27,12 +37,92 @@ def product():
 
 @route('/activity')
 def activity():
-	return template('activity', gen=gen)
+	global activity_db
+	a = activity_db.find().sort('date', 1)
+	activities = [gen.Activity.initFromDict(ac) for ac in a]
+	return template('activity', gen=gen, activities=activities)
 
 @route('/about')
 def about():
 	return template('about', gen=gen)
 
+@route('/index_back')
+def index_back():
+	global message_db
+	if 'admin_account' not in request.session:
+		return 'Login Fail!'
+	a = message_db.find()
+	msgs = [gen.Msg.initFromDict(m) for m in a]
+	return template('backstage/index', msgs=msgs)
+
+@post('/index_back/<id>') 
+def post_index(id):
+	global message_db
+	if 'admin_account' not in request.session:
+		return 'Login Fail!'
+	title = request.forms.get('title')
+	href = request.forms.get('href')
+	if(id == 'new'):
+		m = gen.Msg(title, href=href)
+		message_db.insert_one(m.toDict())
+	else:
+		message_db.update_one({'_id': ObjectId(id)}, {'$set':{
+			'title': title, 
+			'href': href
+		}})
+	redirect('/index_back')
+
+@post('/index_back_delete/<id>') 
+def delete_index(id):
+	global message_db
+	if 'admin_account' not in request.session:
+		return 'Login Fail!'
+	message_db.delete_one({'_id': ObjectId(id)})
+	redirect('/index_back')
+
+@route('/activity_back')
+def activity_back():
+	global activity_db
+	if 'admin_account' not in request.session:
+		return 'Login Fail!'
+	a = activity_db.find().sort('date', 1)
+	activities = [gen.Activity.initFromDict(ac) for ac in a]
+	return template('backstage/activity', activities=activities)
+
+@post('/activity_back/<id>') 
+def post_activity(id):
+	global activity_db
+	if 'admin_account' not in request.session:
+		return 'Login Fail!'
+	month = request.forms.get('month')
+	datetime = request.forms.get('date')
+	[year, month, date] = [int(s) for s in datetime.split('-')]
+	title = request.forms.get('title')
+	href = request.forms.get('href')
+	detail = request.forms.get('detail')
+	img = request.files.get('img')
+	if(id == 'new'):
+		a = gen.Activity(title, href, detail, month, date)
+		id = activity_db.insert_one(a.toDict()).inserted_id
+		id = str(id)
+	else:
+		activity_db.update_one({'_id': ObjectId(id)}, {'$set':{
+			'title': title, 
+			'href': href
+		}})
+	if img:
+		img.save('static/img/activity/' + id)
+		redirect('/activity_back')
+	else:
+		return "FILE ERROR!"
+
+@post('/activity_back_delete/<id>') 
+def delete_activity(id):
+	global activity_db
+	if 'admin_account' not in request.session:
+		return 'Login Fail!'
+	activity_db.delete_one({'_id': ObjectId(id)})
+	redirect('/activity_back')
 
 session_opts = {
     'session.type': 'file',

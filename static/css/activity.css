@@ -23,10 +23,24 @@
 
 #date-prompt {
 	position: absolute;
-	left: 25px;
+	right: 15px;
 	transition: opacity .15s ease-in;
 	opacity: 0.0;
-	color: rgb(150, 150, 150);
+	color: white;
+	background-color: rgb(60, 60, 60);
+	padding: 2px;
+	border-radius: 4px;
+}
+#date-prompt::before {
+	border-color: rgb(60, 60, 60) transparent transparent; 
+    border-style: solid;
+    border-width: 8px 0px 8px 16px; 
+    bottom: -14px;
+    content: '';
+    height: 0px;
+    right: 3px; 
+    position: absolute;
+    width: 0px;
 }
 
 #start {
@@ -86,7 +100,7 @@
 
 .poster {
 	background-color: white;
-	padding: 5px;
+	padding: 7px;
 	opacity: 0.8;
 	transition: opacity .15s ease-in;
 	border-radius: 10px;
@@ -98,7 +112,6 @@
 .poster img {
 	width: 150px;
 	height: 200px;
-	margin: 20px;
 }
 
 #activity-right .poster>* {
@@ -112,6 +125,7 @@
 .disc {
 	width: 100px;
 	color: rgb(60, 60, 60);
+	margin: 0 10px;
 }
 
 h4 {

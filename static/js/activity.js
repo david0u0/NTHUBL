@@ -1,4 +1,4 @@
-var UNIT = 50;
+var UNIT = 25;
 var START = new Date("2016/5/1");
 
 function getPos(ev) {
@@ -19,7 +19,7 @@ function showDate(ev) {
 	pr.html(dateToStr(date));
 	pr.css({
 		"opacity": 1.0,
-		"top": y
+		"top": y-20
 	});
 }
 

@@ -11,9 +11,7 @@
 	<script type="text/javascript" src='js/common.js'></script>
 
 	<script type="text/javascript">
-		activities = [{"date": "2016/5/2", "title": "test", "detail": "testtest", "href": "/", "img": "/img/Huamei2.png"},
-					{"date": "2016/5/5", "title": "test2", "detail": "hahaha", "href": "/about", "img":"/img/size.jpg"}	
-					]; 
+		activities = [{{!','.join([a.toHTML() for a in activities])}}];
 	</script>
 	
 </head>
