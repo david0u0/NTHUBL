@@ -1,23 +1,26 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>2016</title>
+	<title>活動日程</title>
 	<link rel="stylesheet" type="text/css" href="/css/common.css">
+	<link rel="stylesheet" type="text/css" href="css/activity.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
-
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/jquery.sticky.js"></script>
 
 	<script type="text/javascript" src='js/jquery-1.12.0.min.js'></script>
 	<script type="text/javascript" src='js/activity.js'></script>
-	<link rel="stylesheet" type="text/css" href="css/activity.css">
+	<script type="text/javascript" src='js/common.js'></script>
 	<script type="text/javascript">
 		var today = 10;
 	</script>
 	
 </head>
-<body>
+<body onload='handleAllCenter()'>
 	{{! gen.genHeader(2) }}
+	<div id='main-img' class='disp-block'>
+		<img src="img/banner/activity_banner.jpg"/>
+		<div class='discription'>
+		</div>
+	</div>
 	<div id='container'>
 		<div id='timeline'></div>
 		<div id='ball-container'>

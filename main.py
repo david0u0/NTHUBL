@@ -3,11 +3,13 @@ from bottle import static_file, run, route, template, default_app
 from paste import httpserver
 from beaker.middleware import SessionMiddleware
 import content_generator as gen
-import projectQA_main
+#import projectQA_main
 
 @route('/prod/<i>')  #acess through ajax
 def product_detail(i):
-	return gen.genDetailHTML(i)
+	i = int(i)
+	s = "<div id='discription'>" + template('detail_%d' % i) + "</div>"
+	return gen.genDetailSlider(i) + s + "<div class='clear'></div>"
 
 @route('<path:path>')
 def static(path):
@@ -30,7 +32,13 @@ def activity():
 def about():
 	return template('about', gen=gen)
 
-app = SessionMiddleware(default_app(), projectQA_main.session_opts)
+
+session_opts = {
+    'session.type': 'file',
+    'session.data_dir': './session/',
+    'session.auto': True,
+}
+app = SessionMiddleware(default_app(), session_opts)
 #run(app=app, host='0.0.0.0', port=80, debug=True)
 #app = default_app()
 httpserver.serve(app, host='0.0.0.0', port=80)

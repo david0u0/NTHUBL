@@ -13,12 +13,18 @@
     <script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
 
     <script type="text/javascript" src="js/jquery.sticky.js"></script>
+	<script type="text/javascript" src='js/common.js'></script>
     <script type="text/javascript" src="js/aboutus.js"></script>
 </head>
 
 
-<body>
+<body onload='handleAllCenter()'>
     {{! gen.genHeader(3) }}
+	<div id='main-img' class='disp-block' style='height: 450px'>
+		<img src="img/banner/about_banner.jpg"/>
+		<div class='discription'>
+		</div>
+	</div>
     <div id="introduction">
         <div id="chinese-name">國立清華大學畢業生聯合會<br/></div>
         <div id="english-name">National Tsing Hua University Graduation Student Association<br/><br/></div>

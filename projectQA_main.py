@@ -28,11 +28,6 @@ question_db = db.question_db
 studentID_db = db.valid_student_ids
 
 # deal with login session
-session_opts = {
-    'session.type': 'file',
-    'session.data_dir': './session/',
-    'session.auto': True,
-}
 #app = beaker.middleware.SessionMiddleware(bottle.app(), session_opts)
 #bottle.TEMPLATE_PATH.insert(0, '/template/')
 

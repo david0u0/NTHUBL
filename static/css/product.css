@@ -21,10 +21,11 @@
 	width: 250px;
 	height: 200px;
 	border-radius: 10px;
+	opacity: 0.9 !important;
 }
 
 .product .shadow {
-	background-color: rgba(255, 255, 255, 0.3)
+	background-color: rgba(255, 255, 255, 0.4)
 }
 
 .product .discription {
@@ -121,4 +122,56 @@
     color: #000000;
     display:none;
     margin:3px 0px 0px 0px;
+}
+
+#slicker {
+	height: 250px;
+	width: 450px;
+	float: left;
+}
+
+#slicker>img {
+	float: left;
+	height: 250px;
+}
+.slick-prev:before, .slick-next:before {
+	color: gray !important;
+}
+/*********************/
+
+#discription {
+	float: left;
+}
+
+.buy {
+	height: 70px;
+	width: 70px;
+	position: fixed;
+	right: 20px;
+	cursor: pointer;
+	border-width: 2px;
+	border-color: rgba(0, 0, 0, 0.8);
+	border-radius: 35px;
+}
+.buy>p {
+	opacity: 0.0;
+	position: relative;
+	bottom: 50%;
+	right: 0;
+	color: rgb(60, 60, 60);
+	font-size: 18px;
+	transition: opacity .2s ease-in, right .2s ease-in;
+	width: 110px;
+	text-decoration: underline;
+}
+
+#buy-all {
+	top: 40%;
+}
+#buy-t {
+	top: 60%;
+}
+
+.buy::before {
+	color: rgba(0, 0, 0, 0.8);
 }

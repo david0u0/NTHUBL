@@ -4,11 +4,11 @@ def genHeader(n):
 	('activity', '活動'), ('about', '關於我們')]
 	for i in range(0, len(a)):
 		if(i == n):
-			a[i] = "<a href='/%s'><div class='selected'>%s</div></a>" % a[i]
+			a[i] = "<a href='/%s'><div class='nav selected'>%s</div></a>" % a[i]
 		else:
-			a[i] =  "<a href='/%s'><div>%s</div></a>" % a[i]
+			a[i] =  "<a href='/%s'><div class='nav'>%s</div></a>" % a[i]
 	s = " ".join(a)
-	return "<div id='header'>" + s + "</div>"
+	return "<div id='header'>" + s + "<div id='header-icon'>2016  清華大學畢業典禮     </div> </div>"
 
 def genFooter():
 	s = '''
@@ -36,10 +36,10 @@ def genFooter():
 class ProductGenerator:
 	def __init__(self):
 		self.i = 0
-	def gen(self, discription):
+	def gen(self, i, discription):
 		s = '''
 			<div class='disp-block product' onclick='displayDetail(%d)'>
-				<img src='img/pro%d.jpg'/>
+				<img src='img/pro/pro%d.jpg'/>
 				<div class='shadow'>
 					<div class='discription'>
 						%s
@@ -47,45 +47,14 @@ class ProductGenerator:
 				</div>
 			</div>
 		'''
-		s = s % (self.i, self.i, discription)
-		self.i += 1
+		s = s % (i, i, discription)
 		return s
 
-def genDetailHTML(i):
-	s = '''
-	 <table id="description" align="center" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-            <td width="400"><img src="img/size.jpg" height="300" width="400"></td>
-            <td width="400">
-                <font size="6">
-                    領帶<br /><br />
-                </font>
-                <font size="3">
-                    yayayayaya<br />
-                    yayayayayayayayayayaya<br />
-                    yayaya<br /><br />
-                    材質 : xxxxxxx<br />
-                    尺寸 : 10x10x10 cm<br />
-                    價格 : 300元<br /><br />
-                </font>
-            </td>
 
-            <td width="100">
-                <i class="fa fa-thumbs-up fa-2x" id="thumb"></i><br />
-                <p id="thumb-text">按讚</p>
-                <br /><br />
-
-                <i class="fa fa-share-square-o fa-2x" id="share"></i><br />
-                <p id="share-text">分享</p>
-                <br /><br />
-
-                <a href="https://www.facebook.com/nthugrad"><i class="fa fa-cart-arrow-down fa-2x" id="buy"></i></a><br />
-                <p id="buy-text">購買連結</p>
-                <br />
-
-            </td>
-        </tr>
-    </table>
-
-'''
+def genDetailSlider(i):
+	counts = [4, 3, 3, 3, 3, 4]
+	s = '<div id="slicker">'
+	for j in range(0, counts[i]):
+		s += '<img src="/img/detail/detail%d_%d.jpg" />' % (i, j)
+	s += '</div>'
 	return s

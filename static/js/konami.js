@@ -106,7 +106,13 @@ var Konami = function (callback) {
 
 
 var easter_egg = new Konami();
+var toggle = 0;
 easter_egg.code = function() {
-	$('body').append("<div class='huamei-wrapper'><img src='/img/Huamei.png' class='huamei'></img></div>");
+	toggle = !toggle;
+	if(toggle){
+		$('body').append("<div class='huamei-wrapper_k'><img src='/img/Huamei2.png' class='huamei_k'></img></div>");
+	} else {
+		$('body').append("<div class='huamei-wrapper'><img src='/img/Huamei.png' class='huamei'></img></div>");
+	}
 }
 easter_egg.load();

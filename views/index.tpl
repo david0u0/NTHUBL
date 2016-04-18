@@ -1,7 +1,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>2016</title>
+	<title>清華大學2016畢業季</title>
 	<link rel="stylesheet" type="text/css" href="/css/common.css">
 	<link rel="stylesheet" type="text/css" href="/css/index.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
@@ -15,27 +15,29 @@
 <body onload='handleAllCenter()'>
 	{{! gen.genHeader(0) }}
 	<div id='main-img' class='disp-block'>
-		<img src="img/test.jpg"/>
+		<img src="img/banner/index_banner.jpg"/>
 		<div class='discription'>
-			<h1>NTHU BL</h1>
-			<h2>YAA</h2>
-			<h3>test test test</h3>
 		</div>
 	</div>
 	<div id='board'>
-		<a href="http://google.com">
-			<span class='date'>[05.01.2016]</span> 畢業典禮耶耶耶
-		</a>
-		<a href="http://google.com">
-			<span class='date'>[05.01.2016]</span> 清大雄友會徐閔翔^_^
-		</a>
-		<a href="http://google.com">
-			<span class='date'>[05.01.2016]</span> yoyoyoyo~
-		</a>
-		<a href="http://google.com">
-			<span class='date'>[05.01.2016]</span> test
-		</a>
 
+	<div id="news_title">
+	最新公告
+	</div>
+	<a href="">
+	<span class="time">2016.04.07</span> 
+	活動票券繳費方式教學
+	</a>
+
+	<a href="">
+	<span class="time">2016.04.03</span> 
+	快來參加畢業舞會囉!
+	</a>
+
+	<a href="">
+	<span class="time">2016.03.31</span> 
+	畢業商品將於4/10開始預購
+	</a>
 	</div>
 	{{! gen.genFooter()}}
 </body>

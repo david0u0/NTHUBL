@@ -2,3 +2,5 @@
 *.png
 *.pyc
 session/
+test*
+.swp
