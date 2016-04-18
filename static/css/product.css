@@ -1,14 +1,16 @@
 #product-container {
-	margin: 50px auto;
+	margin: 10px auto;
 	width: 850px;
 }
 
 #expander {
-	margin: 50px auto;
+	margin: 10px auto;
+	padding: 20px 30px;;
 	width: 900px;
 	height: 0;
 	opacity: 0;
 	transition: opacity .5s ease-in;
+	overflow: hidden;
 }
 
 .product {
@@ -143,34 +145,32 @@
 	float: left;
 }
 
-.buy {
+#buy {
 	height: 70px;
 	width: 70px;
 	position: fixed;
-	right: 20px;
-	cursor: pointer;
+	right: 50px;
 	border-width: 2px;
 	border-color: rgba(0, 0, 0, 0.8);
 	border-radius: 35px;
-}
-.buy>p {
-	opacity: 0.0;
-	position: relative;
-	bottom: 50%;
-	right: 0;
-	color: rgb(60, 60, 60);
-	font-size: 18px;
-	transition: opacity .2s ease-in, right .2s ease-in;
-	width: 110px;
-	text-decoration: underline;
+	top: 50%;
 }
 
-#buy-all {
-	top: 40%;
+#buy-prompt {
+	opacity: 0.0;
+	position: relative;
+	bottom: 120%;
+	right: 0;
+	transition: opacity .2s ease-in, right .2s ease-in;
+	width: 120px;
 }
-#buy-t {
-	top: 60%;
+
+#buy-prompt a {
+	font-size: 20px;
+	text-decoration: underline;
+	color: rgb(60, 60, 60);
 }
+
 
 .buy::before {
 	color: rgba(0, 0, 0, 0.8);

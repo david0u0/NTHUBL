@@ -3,4 +3,4 @@
 *.pyc
 session/
 test*
-.swp
+*.swp

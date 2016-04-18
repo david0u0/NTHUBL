@@ -1,76 +1,126 @@
-.clear {
-	clear: both;
-}
-
 #container {
-	margin-left: 40%;
+	position: relative;
+	margin: 60px auto;
+	height: 2000px;
+	width: 1010px;
 }
 
 #timeline {
+	position: relative;
 	float: left;
-	height: 500px;
-	width: 20px;
-	margin-right: 10px;
-	background-color: rgb(60, 60, 60);
+	height: 100%;
+	width: 5px;
+	background-color: rgb(150, 150, 150);
+	cursor: pointer;
 }
 
-#ball-container {
-	float: left;
+.activity {
 	position: relative;
-	margin-right: auto;
-	margin-left: auto;
+	float: left;
+	height: 100%;
+	width: 500px;
+}
+
+#date-prompt {
+	position: absolute;
+	left: 25px;
+	transition: opacity .15s ease-in;
+	opacity: 0.0;
+	color: rgb(150, 150, 150);
+}
+
+#start {
+	top: 0;
+	width: 30px;
+	height: 30px;
+	border-radius: 30px;
+	border-style: solid;
+	border-width: 5px;
+	position: absolute;
+	right: -17px;
+	border-color: rgb(150, 150, 150);
+	color: rgb(150, 150, 150);
+	background-color: rgb(240, 240, 240);
+	text-align: center;
+	font-size: 25px;
 }
 
 .ball {
+	width: 20px;
+	height: 20px;
+	border-radius: 20px;
+	border-style: solid;
+	border-width: 3px;
 	position: absolute;
-	height: 15px;
-	width: 15px;
-	border-radius: 7px;
-	transition: opacity 0.2s ease-in-out;
-	opacity: 0.6;
-	cursor: pointer;
+	right: -10px;
+	border-color: rgb(150, 150, 150);
+	color: rgb(150, 150, 150);
+	background-color: rgb(240, 240, 240);
+	text-align: center;
+	font-weight: bold;
 }
 
-.ball:hover {
-	opacity: 1;
-}
-
-.open {
-	opacity: 1;
-	z-index: 99;
-}
-
-.inactive {
-	opacity: 0;
-	cursor: auto;
-	z-index: 0;
-}
-
-.inactive:hover {
-	opacity: 0;
-}
-
-.title {
+.line {
+	background-color: rgb(150, 150, 150);
 	position: absolute;
-	left: 20px;
-	top: -5px;
-	display: inline-block;
-	width: 500px;
-	color: rgb(40, 40, 40);
-	-webkit-user-select: none;
+	width: 80px;
+	height: 3px;
 }
 
-.detail {
-	opacity: 0;
-	transition: opacity 0.2s ease-in-out;
+#activity-left .line {
+	right: 12px;
+}
+#activity-right .line {
+	left: 12px;
+}
+#activity-left .poster {
 	position: absolute;
-	left: 30px;
-	color: rgb(50, 50, 50);
-	font-size: 20px;
-	width: 500px;
+	right: 100px;
+	padding-left: 20px;
+}
+#activity-right .poster {
+	position: absolute;
+	left: 100px;
+	padding-right: 20px;
 }
 
-a {
-	cursor: pointer;
-	color: rgb(255, 30, 120);
+.poster {
+	background-color: white;
+	padding: 5px;
+	opacity: 0.8;
+	transition: opacity .15s ease-in;
+	border-radius: 10px;
+}
+.poster:hover {
+	opacity: 1.0;
+}
+
+.poster img {
+	width: 150px;
+	height: 200px;
+	margin: 20px;
+}
+
+#activity-right .poster>* {
+	float: left;
+}
+
+#activity-left .poster>* {
+	float: right;
+}
+
+.disc {
+	width: 100px;
+	color: rgb(60, 60, 60);
+}
+
+h4 {
+	font-size: 25px;
+	margin: 0;
+}
+h5 {
+	font-size: 13px;
+	font-weight: normal;
+	margin-top: 2px;
+	margin-bottom: 25px;
 }

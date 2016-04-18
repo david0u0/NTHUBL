@@ -9,8 +9,11 @@
 	<script type="text/javascript" src='js/jquery-1.12.0.min.js'></script>
 	<script type="text/javascript" src='js/activity.js'></script>
 	<script type="text/javascript" src='js/common.js'></script>
+
 	<script type="text/javascript">
-		var today = 10;
+		activities = [{"date": "2016/5/2", "title": "test", "detail": "testtest", "href": "/", "img": "/img/Huamei2.png"},
+					{"date": "2016/5/5", "title": "test2", "detail": "hahaha", "href": "/about", "img":"/img/size.jpg"}	
+					]; 
 	</script>
 	
 </head>
@@ -22,17 +25,14 @@
 		</div>
 	</div>
 	<div id='container'>
-		<div id='timeline'></div>
-		<div id='ball-container'>
-			<div data-title='畢業囉' data-date='2' data-duration='3' class='pass'>test test test哈哈哈</div>
-			<div data-title='畢業囉2' data-date='7' data-duration='13'>test test test <a href='http://google.com'>123</a></div>
-			<div data-title="o'_'o" data-date='8' data-duration='6'>
-				test test test<br/>
-				<img src="img/Cover.jpg" width='150px'>
-			</div>
-			<div data-title='畢業舞會YA' data-date='11' data-duration='9'>test test test哈哈哈</div>
+		<div id='activity-left' class='activity'></div>
+		<div id='timeline' onmouseover="showDate(event)" onmouseout="hideDate()" onmousemove="showDate(event)">
+			<div id='start'>+</div>
+			<div id='date-prompt'></div>
 		</div>
+		<div id='activity-right' class='activity'></div>
 		<div class='clear'></div>
+		
 	</div>
 	{{! gen.genFooter()}}
 </body>

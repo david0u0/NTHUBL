@@ -29,7 +29,7 @@ function displayDetail(index) {
 			if (req.status == 200) {
 				detail.innerHTML = req.responseText;
 				expander.style.opacity = 1;
-				expand(expander, detail.offsetHeight+30);
+				expand(expander, 330);
 
 				createSlicker(index);
 			}
@@ -44,13 +44,12 @@ function displayDetail(index) {
 
 function expand(expander, height) {
 	var h = expander.offsetHeight;
-	if(Math.abs(h - height) < 20) {
+	if(h > height) {
 		//document.getElementById('main-img').scrollIntoView();
 		return;
 	}
-	if(h < height) expander.style.height = h + 15;
-	else expander.style.height = h - 15;
-	setTimeout(function() {expand(expander, height);}, 15);
+	else expander.style.height = h + 3;
+	setTimeout(function() {expand(expander, height);}, 30);
 }
 
 function createSlicker(index) {
@@ -64,28 +63,15 @@ function createSlicker(index) {
 	});
 }
 
-function expandBuyAll() {
-	$('#buy-all-prompt').css({
+function expandBuy() {
+	$('#buy-prompt').css({
 		"opacity": 1.0,
 		"right": 110
 	});
 }
 
-function closeBuyAll() {
-	$('#buy-all-prompt').css({
-		"opacity": 0.0,
-		"right": 0
-	});
-}
-function expandTAll() {
-	$('#buy-t-prompt').css({
-		"opacity": 1.0,
-		"right": 90
-	});
-}
-
-function closeTAll() {
-	$('#buy-t-prompt').css({
+function closeBuy() {
+	$('#buy-prompt').css({
 		"opacity": 0.0,
 		"right": 0
 	});

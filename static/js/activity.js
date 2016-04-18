@@ -1,95 +1,78 @@
-COLOR = ['red', 'blue', 'yellow', 'green'];
-STEP = 22;
-activities = [];
-details = [];
-open = [];
-timer = null;
+var UNIT = 50;
+var START = new Date("2016/5/1");
+
+function getPos(ev) {
+	var y = 0, obj = $('#timeline')[0];
+	if (obj.offsetParent) {
+		do {
+			y += obj.offsetTop;
+		} while (obj = obj.offsetParent);
+	}
+	return ev.pageY-y;
+}
+
+function showDate(ev) {
+	var y = getPos(ev);
+	var pr = $('#date-prompt');
+	var date = new Date(START);
+	date.setDate(date.getDate() + parseInt(y/UNIT));
+	pr.html(dateToStr(date));
+	pr.css({
+		"opacity": 1.0,
+		"top": y
+	});
+}
+
+function hideDate() {
+	$('#date-prompt').css({
+		"opacity": 0.0
+	});
+}
+
+function dateToStr(date) {
+	return date.getMonth()+1 + '/' + date.getDate()
+}
+
+function dateDelta(date) {
+	var t = new Date(date) - START;
+	return Math.round(t/86400000);
+}
 
 $(document).ready(function() {
-	var container = $('#ball-container');
-	var a = container.children('div');
-	for(var i = a.length-1; i >= 0; i--) {
-		var p = $(a[i]);
-		var title = p.data('title'), date = parseInt(p.data('date')), duration = parseInt(p.data('duration'));
-		var div = $('<div>', {
-			'class': 'ball',
-			'data-num': activities.length,
-			'data-duration': duration
+	for(var i = 0; i < activities.length; i++) {
+		var date = dateDelta(activities[i].date);
+		var y = date * UNIT;
+		var ball = $("<div class='ball'></div>");
+		if(i % 2 == 0) ball.html("←");
+		else ball.html("→ ");
+		ball.css({
+			"top": y
 		});
-		var color = COLOR[i%COLOR.length];
-		if(p.hasClass('pass')) color = 'gray';
-		div.css({
-			"background-color": color,
-			"top": date*STEP
-		});
-		$("<div class='title'>"+title+"</div>").appendTo(div);
-		var detail = $('<div>', {
-			'class': 'detail'
-		});
-		detail.css('top', date*STEP + STEP);
-		detail.html(p.html());
-		p.remove();
-		detail.appendTo(container);
-		div.appendTo(container);
-		div.click(clickBall);
+		$("#timeline").append(ball);
 
-		activities.push(div);
-		details.push(detail);
-		open.push(false);
+		var a = $("<a href='"+activities[i].href+"'></a>")
+		var poster = $("<div class='poster'></div>");
+		poster.css({
+			top: y - 30
+		});
+		var img = $("<img src='"+activities[i].img+"'/>");
+		var disc = $("<div class='disc'><h4>"+activities[i].title+"</h4>"+
+			"<h5>"+activities[i].date+"</h5>"+activities[i].detail+"</div>")
+		var line = $("<div class='line'></div>");
+		line.css({
+			top: y + 10
+		});
+
+		poster.append(img);
+		poster.append(disc);
+		a.append(poster);
+		if(i % 2 == 0){
+			$("#activity-left").append(a);
+			$("#activity-left").append(line);
+		}
+		else {
+			$("#activity-right").append(a);
+			$("#activity-right").append(line);
+		}
 	}
 });
-
-function clickBall() {
-	var num = parseInt($(this).data('num'));
-	if(open[num] == false) {
-		for(var i = 0; i < activities.length; i++) {
-			var tar = activities[i];
-			if(i == num) {
-				tar.removeClass('inactive');
-				tar.addClass('open');
-				details[i].css({'opacity': 1});
-				clearTimeout(timer);
-				expand(i, parseInt(tar.data('duration')) * STEP);
-			}
-			else {
-				tar.removeClass('open');
-				tar.addClass('inactive');
-				tar.off('click');
-			}
-		}
-	}
-	else {
-		for(var i = 0; i < activities.length; i++) {
-			var tar = activities[i];
-			if(i == num) {
-				tar.removeClass('open');
-				details[i].css({'opacity': 0});
-				clearTimeout(timer);
-				shrink(i);
-			}
-			else {
-				tar.removeClass('inactive');
-				tar.click(clickBall);
-			}
-		}
-	}
-	open[num] = !open[num];
-}
-
-function expand(i, h) {
-	var div = activities[i];
-	var cur_h = parseInt(div.height());
-	if(cur_h < h) {
-		div.height(cur_h+STEP);
-		timer = setTimeout('expand('+i+','+h+')', 15);
-	}
-}
-
-function shrink(i) {
-	var div = activities[i];
-	var cur_h = parseInt(div.height());
-	if(cur_h > 15) {
-		div.height(cur_h-STEP);
-		timer = setTimeout('shrink('+i+')', 15);
-	}
-}

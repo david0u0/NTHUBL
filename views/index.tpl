@@ -24,20 +24,9 @@
 	<div id="news_title">
 	最新公告
 	</div>
-	<a href="">
-	<span class="time">2016.04.07</span> 
-	活動票券繳費方式教學
-	</a>
-
-	<a href="">
-	<span class="time">2016.04.03</span> 
-	快來參加畢業舞會囉!
-	</a>
-
-	<a href="">
-	<span class="time">2016.03.31</span> 
-	畢業商品將於4/10開始預購
-	</a>
+	% for msg in msgs:
+		{{!msg.toHTML()}}
+	% end
 	</div>
 	{{! gen.genFooter()}}
 </body>

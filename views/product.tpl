@@ -33,6 +33,7 @@
 		</div>
 	</div>
 	<div id='product-container'>
+		<div class='clear'> </div>
 		{{! product_gen.gen(0, '''
 			<h2>大學T</h2>
 			<h3>NTHU</h3>
@@ -61,17 +62,13 @@
 	</div>
 	{{! gen.genFooter()}}
 
-	<a href='/'>
-	<div id='buy-all' class='buy fa fa-cart-arrow-down fa-3x' onmouseover="expandBuyAll()" onmouseout="closeBuyAll()"> 
-		<p id='buy-all-prompt'>購買其它商品</p>
+	<div id='buy' class='buy fa fa-cart-arrow-down fa-5x' onmouseover="expandBuy()" onmouseout="closeBuy()"> 
+		<div id='buy-prompt'>
+			<a href='/'><p>購買大學T</p></a>
+			<a href='/'><p>購買其它商品</p></a>
+		</div>
 	</div>
-	</a>
 
-	<a href='/'>
-	<div id='buy-t' class='buy fa fa-cart-arrow-down fa-3x' onmouseover="expandTAll()" onmouseout="closeTAll()"> 
-		<p id='buy-t-prompt'>購買大學T</p>
-	</div>
-	</a>
 
 </body>
 </html>

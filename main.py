@@ -18,7 +18,8 @@ def static(path):
 @route('/')
 @route('/home')
 def index():
-	return template('index', gen=gen)
+	msgs = [gen.Msg("test", msg="123"), gen.Msg("haha")]
+	return template('index', gen=gen, msgs=msgs)
 
 @route('/product')
 def product():
