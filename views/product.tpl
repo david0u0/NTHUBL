@@ -66,8 +66,8 @@
 
 	<div id='buy' class='buy fa fa-cart-arrow-down fa-5x' onclick="return clickBuy()"> 
 		<div id='buy-prompt'>
-			<a href='/about'><p>購買大學T</p></a>
-			<a href='/'><p>購買其它商品</p></a>
+			<a href='https://docs.google.com/forms/d/1WbwY0IKGcMj9YSnNKSEemIZkkAeQbGDTcdAko3qEnHs/viewform?entry.1289693516=0&entry.1676730222=0&entry.796627494=0&entry.192082413=0&entry.1597433622=0&entry.724600064=0&entry.959338720=0&entry.1306287042&entry.657010318&entry.583956367&entry.1837431478'><p>購買大學T</p></a>
+			<a href='https://docs.google.com/forms/d/1fFFdSn8KSvFVH8sAptJ_p9KiDuVQQFDUGP_SZMIVVXo/viewform?entry.397056384=0&entry.1477225511=0&entry.2040260101=0&entry.716078182=0&entry.1786047621=0&entry.2102186177&entry.1195985647&entry.1724486618&entry.513807380'><p>購買其它商品</p></a>
 		</div>
 	</div>
 

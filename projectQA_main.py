@@ -62,6 +62,8 @@ def index_page():
 # Request for admin Login Page
 @get('/adminLogin')
 def loginAdmin():
+	if 'admin_account' in request.session:
+		redirect('/adminPage')
 	return static_file('adminLogin.html', root='./static_pages/')
 
 # Request for admin Page
