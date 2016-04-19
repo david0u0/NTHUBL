@@ -19,8 +19,8 @@
 		cursor: pointer;
 	}
 	textarea {
-		width: 200px;
-		height: 100px;
+		width: 300px;
+		height: 200px;
 	}
 	</style>
 

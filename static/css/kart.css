@@ -25,6 +25,7 @@
 	height: 35px;
 	text-decoration: underline;
 	color: rgb(60, 60, 60);
+	font-family: 微軟正黑體 !important;
 }
 #buy-prompt a:hover {
 	color: rgb(255, 0, 150);
