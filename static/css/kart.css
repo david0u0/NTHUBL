@@ -1,0 +1,33 @@
+#buy {
+	height: 70px;
+	width: 70px;
+	position: fixed;
+	right: 50px;
+	border-width: 2px;
+	border-color: rgba(0, 0, 0, 0.8);
+	border-radius: 35px;
+	top: 50%;
+	cursor: pointer;
+}
+
+#buy-prompt {
+	opacity: 0.0;
+	position: relative;
+	bottom: 120%;
+	right: 0;
+	transition: opacity .2s ease-in, right .2s ease-in;
+	width: 120px;
+}
+
+#buy-prompt a {
+	display: inline-block;
+	font-size: 20px;
+	height: 35px;
+	text-decoration: underline;
+	color: rgb(60, 60, 60);
+}
+
+
+.buy::before {
+	color: rgba(0, 0, 0, 0.8);
+}

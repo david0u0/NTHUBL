@@ -146,6 +146,7 @@ class Activity:
 
 	def toHTMLForm(self):
 		date = '2016-%02d-%02d' % (self.month, self.date)
+		detail = self.detail.replace('</br>', '\n')
 		s = '''
 		<tr>
 		<form method='post' action='/activity_back/%s' enctype="multipart/form-data">
@@ -161,5 +162,5 @@ class Activity:
 			<td><button>DELETE</button></td>
 		</form>
 		</tr>
-		''' % (self.id, date, self.title, self.href, self.detail, self.id, self.id, self.id, self.id, self.id)
+		''' % (self.id, date, self.title, self.href, detail, self.id, self.id, self.id, self.id, self.id)
 		return s

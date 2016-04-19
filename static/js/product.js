@@ -63,16 +63,3 @@ function createSlicker(index) {
 	});
 }
 
-function expandBuy() {
-	$('#buy-prompt').css({
-		"opacity": 1.0,
-		"right": 110
-	});
-}
-
-function closeBuy() {
-	$('#buy-prompt').css({
-		"opacity": 0.0,
-		"right": 0
-	});
-}

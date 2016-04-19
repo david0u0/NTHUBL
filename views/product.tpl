@@ -3,6 +3,7 @@
 	<title>商品介紹</title>
 	<link rel="stylesheet" type="text/css" href="/css/common.css">
 	<link rel="stylesheet" type="text/css" href="/css/product.css">
+	<link rel="stylesheet" type="text/css" href="/css/kart.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 
 	<link rel="stylesheet" type="text/css" href="/slick/slick.css"/>
@@ -13,6 +14,7 @@
 
 	<script type="text/javascript" src="/js/common.js"></script>
 	<script type="text/javascript" src="/js/product.js"></script>
+	<script type="text/javascript" src="/js/kart.js"></script>
 	<script type="text/javascript">
 	window.onresize = function(event) {
 		handleAllCenter();
@@ -62,9 +64,9 @@
 	</div>
 	{{! gen.genFooter()}}
 
-	<div id='buy' class='buy fa fa-cart-arrow-down fa-5x' onmouseover="expandBuy()" onmouseout="closeBuy()"> 
+	<div id='buy' class='buy fa fa-cart-arrow-down fa-5x' onclick="return clickBuy()"> 
 		<div id='buy-prompt'>
-			<a href='/'><p>購買大學T</p></a>
+			<a href='/about'><p>購買大學T</p></a>
 			<a href='/'><p>購買其它商品</p></a>
 		</div>
 	</div>
