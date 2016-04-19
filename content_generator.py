@@ -129,7 +129,7 @@ class Activity:
 		a.id = d['_id']
 		return a
 	def toHTML(self):
-		date = '2016-%d-%d' % (self.month, self.date)
+		date = '2016-%02d-%02d' % (self.month, self.date)
 		s = '''
 		{
 			'date': '%s',
@@ -145,13 +145,14 @@ class Activity:
 		return self.__dict__
 
 	def toHTMLForm(self):
+		date = '2016-%02d-%02d' % (self.month, self.date)
 		s = '''
 		<tr>
 		<form method='post' action='/activity_back/%s' enctype="multipart/form-data">
-			<td><input type='date' name='date' data-month='%s' data-day='%s'/></td>
+			<td><input type='date' name='date' data-date='%s'/></td>
 			<td><input type='text' name='title' value='%s'/></td>
 			<td><input type='text' name='href' value='%s'/></td>
-			<td><textarea name='detail'> %s </textarea> </td>
+			<td><textarea name='detail'>%s</textarea> </td>
 			<td><img id='img-%s' src='img/activity/%s' onclick="upload('%s')"/></td>
 			<input id='upload-%s' type="file" name="img"/>
 			<td><button>EDIT</button></td>
@@ -160,5 +161,5 @@ class Activity:
 			<td><button>DELETE</button></td>
 		</form>
 		</tr>
-		''' % (self.id, self.month, self.date, self.title, self.href, self.detail, self.id, self.id, self.id, self.id, self.id)
+		''' % (self.id, date, self.title, self.href, self.detail, self.id, self.id, self.id, self.id, self.id)
 		return s

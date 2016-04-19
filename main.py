@@ -50,7 +50,7 @@ def about():
 def index_back():
 	global message_db
 	if 'admin_account' not in request.session:
-		return 'Login Fail!'
+		redirect('/adminLogin')
 	a = message_db.find()
 	msgs = [gen.Msg.initFromDict(m) for m in a]
 	return template('backstage/index', msgs=msgs)
@@ -59,7 +59,7 @@ def index_back():
 def post_index(id):
 	global message_db
 	if 'admin_account' not in request.session:
-		return 'Login Fail!'
+		redirect('/adminLogin')
 	title = request.forms.get('title')
 	href = request.forms.get('href')
 	if(id == 'new'):
@@ -76,7 +76,7 @@ def post_index(id):
 def delete_index(id):
 	global message_db
 	if 'admin_account' not in request.session:
-		return 'Login Fail!'
+		redirect('/adminLogin')
 	message_db.delete_one({'_id': ObjectId(id)})
 	redirect('/index_back')
 
@@ -84,7 +84,7 @@ def delete_index(id):
 def activity_back():
 	global activity_db
 	if 'admin_account' not in request.session:
-		return 'Login Fail!'
+		redirect('/adminLogin')
 	a = activity_db.find().sort('date', 1)
 	activities = [gen.Activity.initFromDict(ac) for ac in a]
 	return template('backstage/activity', activities=activities)
@@ -93,13 +93,16 @@ def activity_back():
 def post_activity(id):
 	global activity_db
 	if 'admin_account' not in request.session:
-		return 'Login Fail!'
+		redirect('/adminLogin')
 	month = request.forms.get('month')
 	datetime = request.forms.get('date')
 	[year, month, date] = [int(s) for s in datetime.split('-')]
 	title = request.forms.get('title')
 	href = request.forms.get('href')
 	detail = request.forms.get('detail')
+	detail = detail.replace("'", "\\'")
+	detail = detail.replace("\r\n", "</br>")
+	detail = detail.replace("\n", "</br>")
 	img = request.files.get('img')
 	if(id == 'new'):
 		if not img:
@@ -123,7 +126,7 @@ def post_activity(id):
 def delete_activity(id):
 	global activity_db
 	if 'admin_account' not in request.session:
-		return 'Login Fail!'
+		redirect('/adminLogin')
 	activity_db.delete_one({'_id': ObjectId(id)})
 	redirect('/activity_back')
 
