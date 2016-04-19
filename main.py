@@ -38,8 +38,9 @@ def product():
 @route('/activity')
 def activity():
 	global activity_db
-	a = activity_db.find().sort('date', 1)
+	a = activity_db.find()
 	activities = [gen.Activity.initFromDict(ac) for ac in a]
+	activities = sorted(activities, gen.Activity.compare)
 	return template('activity', gen=gen, activities=activities)
 
 @route('/about')
@@ -85,8 +86,9 @@ def activity_back():
 	global activity_db
 	if 'admin_account' not in request.session:
 		redirect('/adminLogin')
-	a = activity_db.find().sort('date', 1)
+	a = activity_db.find()
 	activities = [gen.Activity.initFromDict(ac) for ac in a]
+	activities = sorted(activities, gen.Activity.compare)
 	return template('backstage/activity', activities=activities)
 
 @post('/activity_back/<id>') 
@@ -103,6 +105,7 @@ def post_activity(id):
 	detail = detail.replace("'", "\\'")
 	detail = detail.replace("\r\n", "</br>")
 	detail = detail.replace("\n", "</br>")
+	detail = detail.replace("  ", "&nbsp;&nbsp;")
 	img = request.files.get('img')
 	if(id == 'new'):
 		if not img:

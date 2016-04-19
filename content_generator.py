@@ -128,6 +128,14 @@ class Activity:
 		a = Activity(d['title'], d['href'], d['detail'], d['month'], d['date'])
 		a.id = d['_id']
 		return a
+	@staticmethod
+	def compare(a, b):
+		if a.month > b.month:
+			return 1
+		elif a.month < b.month:
+			return -1
+		else:
+			return a.date - b.date
 	def toHTML(self):
 		date = '2016-%02d-%02d' % (self.month, self.date)
 		s = '''
@@ -147,6 +155,7 @@ class Activity:
 	def toHTMLForm(self):
 		date = '2016-%02d-%02d' % (self.month, self.date)
 		detail = self.detail.replace('</br>', '\n')
+		detail = detail.replace('%nbsp;&nbsp', '  ')
 		s = '''
 		<tr>
 		<form method='post' action='/activity_back/%s' enctype="multipart/form-data">

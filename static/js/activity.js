@@ -1,6 +1,4 @@
-var UNIT = 170;
-var START = new Date("2016/5/8");
-
+var omissions = new OmissioinList();
 function getPos(ev) {
 	var y = 0, obj = $('#timeline')[0];
 	if (obj.offsetParent) {
@@ -15,7 +13,7 @@ function showDate(ev) {
 	var y = getPos(ev);
 	var pr = $('#date-prompt');
 	var date = new Date(START);
-	date.setDate(date.getDate() + parseInt(y/UNIT));
+	date.setDate(date.getDate() + omissions.getDay(y));
 	pr.html(dateToStr(date));
 	pr.css({
 		"opacity": 1.0,
@@ -33,15 +31,12 @@ function dateToStr(date) {
 	return date.getMonth()+1 + '/' + date.getDate()
 }
 
-function dateDelta(date) {
-	var t = new Date(date) - START;
-	return Math.round(t/86400000);
-}
 
 $(document).ready(function() {
 	for(var i = 0; i < activities.length; i++) {
-		var date = dateDelta(activities[i].date);
-		var y = date * UNIT;
+		var day = dateDelta(activities[i].date);
+		omissions.pushActivityDays(day);
+		var y = omissions.getY(day);
 		var ball = $("<div class='ball'></div>");
 		if(i % 2 == 0) ball.html("←");
 		else ball.html("→ ");
@@ -57,7 +52,7 @@ $(document).ready(function() {
 		});
 		var img = $("<img src='"+activities[i].img+"'/>");
 		var disc = $("<div class='disc'><h4>"+activities[i].title+"</h4>"+
-			"<h5>"+activities[i].date+"</h5>"+activities[i].detail+"</div>")
+			activities[i].detail+"</div>")
 		var line = $("<div class='line'></div>");
 		line.css({
 			top: y + 10
@@ -75,4 +70,17 @@ $(document).ready(function() {
 			$("#activity-right").append(line);
 		}
 	}
+	drawOmisions();
 });
+
+function drawOmisions() {
+	var os = omissions.omissions;
+	for(var i = 0; i < os.length; i++) {
+		var o = os[i];
+		var sign = $("<div class='sign'></div>");
+		sign.css({
+			"top": o.y
+		});
+		$("#timeline").append(sign);
+	}
+}

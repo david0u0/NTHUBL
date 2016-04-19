@@ -8,6 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/kart.css">
 
 	<script type="text/javascript" src='js/jquery-1.12.0.min.js'></script>
+	<script type="text/javascript" src='js/activity_shrink_date.js'></script>
 	<script type="text/javascript" src='js/activity.js'></script>
 	<script type="text/javascript" src='js/common.js'></script>
 	<script type="text/javascript" src="/js/kart.js"></script>
