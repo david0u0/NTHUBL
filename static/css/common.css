@@ -36,7 +36,12 @@ h3 {
 	padding: 0;
 	z-index: 10;
 }
-
+.header-wrapper{
+	position:relative;
+	float:right;
+	margin-top:25px;
+	right:100px;
+}
 .nav {
 	float: left;
 	margin: 20px;
@@ -149,3 +154,8 @@ h3 {
 	color:rgba(209, 206, 206, 0.79);
 } 
 #footer-content i:hover { color:#fff;} 
+
+.bold {
+	font-weight: bold;
+	font-style: italic;
+}

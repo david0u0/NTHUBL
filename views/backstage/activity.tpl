@@ -18,6 +18,10 @@
 		width: 80px;
 		cursor: pointer;
 	}
+	textarea {
+		width: 200px;
+		height: 100px;
+	}
 	</style>
 
 	<script>
@@ -25,11 +29,7 @@
 		var a = $('input[type=date]');
 		for(var i = 0; i < a.length-1; i++) {
 			var input = $(a[i]);
-			var m = input.data('month');
-			var d = input.data('day');
-			if(m < 10) m = '0' + m;
-			if(d < 10) d = '0' + d;
-			a[i].defaultValue = '2016-'+m+'-'+d;
+			a[i].defaultValue = $(a[i]).data('date');
 		}
 	});
 	function upload(id) {
