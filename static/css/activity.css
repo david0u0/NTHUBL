@@ -9,7 +9,7 @@
 	position: relative;
 	float: left;
 	height: 100%;
-	width: 7px;
+	width: 8px;
 	background-color: rgb(150, 150, 150);
 	cursor: pointer;
 }
@@ -30,6 +30,7 @@
 	background-color: rgb(60, 60, 60);
 	padding: 2px;
 	border-radius: 4px;
+	z-index: 100;
 }
 #date-prompt::before {
 	border-color: rgb(60, 60, 60) transparent transparent; 
@@ -49,14 +50,15 @@
 	height: 30px;
 	border-radius: 30px;
 	border-style: solid;
-	border-width: 5px;
+	border-width: 8px;
 	position: absolute;
-	right: -17px;
+	right: -19px;
 	border-color: rgb(150, 150, 150);
 	color: rgb(150, 150, 150);
 	background-color: rgb(240, 240, 240);
 	text-align: center;
-	font-size: 25px;
+	font-size: 22px;
+	font-weight: bold;
 }
 
 .ball {
@@ -77,15 +79,16 @@
 .line {
 	background-color: rgb(150, 150, 150);
 	position: absolute;
-	width: 80px;
+	width: 83px;
 	height: 3px;
+	font-weight: bold;
 }
 
 #activity-left .line {
-	right: 12px;
+	right: 9px;
 }
 #activity-right .line {
-	left: 12px;
+	left: 8px;
 }
 #activity-left .poster {
 	position: absolute;
@@ -102,7 +105,7 @@
 	opacity: 0.8;
 	transition: opacity .15s ease-in;
 	border-radius: 10px;
-	width: 420px;
+	width: 450px;
 }
 .poster:hover {
 	opacity: 1.0;
@@ -122,7 +125,7 @@
 }
 
 .disc {
-	width: 250px;
+	width: 275px;
 	color: rgb(60, 60, 60);
 	margin: 0 10px;
 	line-height: 24px;
@@ -150,5 +153,14 @@ h5 {
 	border-color: rgb(150, 150, 150);
 	border-width: 3px;
 	border-style: solid none;
-	right: -9;
+	right: -8px;
+}
+
+#buy-prompt {
+	opacity: 1.0 !important;
+	position: relative;
+	bottom: 10px !important;
+	right: 0;
+	transition: opacity .2s ease-in, right .2s ease-in;
+	width: 120px;
 }

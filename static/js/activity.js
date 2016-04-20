@@ -38,8 +38,6 @@ $(document).ready(function() {
 		omissions.pushActivityDays(day);
 		var y = omissions.getY(day);
 		var ball = $("<div class='ball'></div>");
-		if(i % 2 == 0) ball.html("←");
-		else ball.html("→ ");
 		ball.css({
 			"top": y
 		});

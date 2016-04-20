@@ -55,7 +55,7 @@ def setup_request():
 # Static Page Handling
 ##########################################################################
 # Request for HomePage
-@route('/projectQAwelnfwejfowej')
+@route('/projectQA')
 def index_page():
 	return static_file('projectQA.html',root='./static_pages/')
 
